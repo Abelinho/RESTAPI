@@ -19,15 +19,42 @@ private String client_reference; // = {"POC","100","05QQAWQERQWHYTFDYUSwY"};
 	
 	private String service_id;
 	
-	
+	private String rantok;
 
-	public SecurityUtil(String clientId, String clientSecret, String client_reference, String trans_amount,
-			String service_id) {
-		this.clientId = clientId;
+	public String getRantok() {
+		return rantok;
+	}
+
+	public void setRantok(String rantok) {
+		this.rantok = rantok;
+	}
+
+	public String getClientId() {
+		return clientId;
+	}
+
+	public String getClientSecret() {
+		return clientSecret;
+	}
+
+	public String getClient_reference() {
+		return client_reference;
+	}
+
+	public String getTrans_amount() {
+		return trans_amount;
+	}
+
+	public String getService_id() {
+		return service_id;
+	}
+
+	public SecurityUtil() {
+	   /*	this.clientId = clientId;
 		this.clientSecret = clientSecret;
 		this.client_reference = client_reference;
 		this.trans_amount = trans_amount;
-		this.service_id = service_id;
+		this.service_id = service_id;*/
 	}
 
 	/*public String getClientId() {
@@ -121,7 +148,7 @@ private String client_reference; // = {"POC","100","05QQAWQERQWHYTFDYUSwY"};
 			sb.append(s);
 			addSeparator = true;
 			
-			//System.out.println("this method was called!");
+			System.out.println("this method was called!");
 		}
 
 		String serverSignature = hmacSha256(sb.toString(), secret);

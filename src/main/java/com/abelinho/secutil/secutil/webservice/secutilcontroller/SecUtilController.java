@@ -17,17 +17,21 @@ public class SecUtilController {
 	@GetMapping(path="/getclientdetails")	
 	public SecurityUtil getUserrDetails(@RequestParam(value="client_id") String clientId, @RequestParam(value="client_secret") String clientSecret, @RequestParam(value="client_ref") String clientRef, @RequestParam(value="trans_amount") String transAmount, @RequestParam(value="service_id") String servId ) {
 		
-		SecurityUtil tokenGen = new SecurityUtil(clientId, clientSecret, clientRef, transAmount, servId);
-		
-		tokenGen.setClient_reference(clientRef);
+		SecurityUtil tokenGen = new SecurityUtil();
 		
 		tokenGen.setClientId(clientId);
 		
 		tokenGen.setClientSecret(clientSecret);
 		
-		tokenGen.setService_id(servId);
+		tokenGen.setClient_reference(clientRef);
 		
 		tokenGen.setTrans_amount(transAmount);
+		
+		tokenGen.setService_id(servId);
+		
+		String randToken=tokenGen.calculateAuthorizationSignature(clientRef, transAmount, servId, clientId, clientSecret);
+		
+		tokenGen.setRantok(randToken);
 		
 		 return tokenGen;	
 		
